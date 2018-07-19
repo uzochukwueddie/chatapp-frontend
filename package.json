@@ -22,6 +22,7 @@
     "@angular/router": "^6.0.3",
     "@types/materialize-css": "^1.0.3",
     "core-js": "^2.5.4",
+    "hoek": "^4.2.1",
     "lodash": "^4.17.10",
     "materialize-css": "^1.0.0-rc.2",
     "moment": "^2.22.2",

@@ -1,0 +1,77 @@
+<div class="row">
+  <div class="col s12" style="margin-bottom: 5px ">
+    <div class="row">
+      <div class="card">
+        <div class="valign-wrapper" style="background: #64b5f6 !important; margin-bottom: 200px ">
+          <div class="col s12 imgCol">
+            <img *ngIf="receiverData" src="http://res.cloudinary.com/ratingapp/image/upload/v{{receiverData.picVersion}}/{{receiverData.picId}}"
+              class="imgCircle">
+          </div>
+          <div class="row" style="height: 60px">
+            <div class="col s10 nameCol">
+              <span>
+                {{receiver}}
+                <p class="isOnline" *ngIf="isOnline">Online</p>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col s12 rowDiv" ngx-auto-scroll lock-y-offset="10" observe-attributes>
+    <div class="row">
+      <div class="col s12">
+        <div class="message-wrspper" *ngFor="let message of messagesArray">
+          <div class="left" *ngIf="user.username !== receiver && user.username !== message.sendername">
+            <div class="chat-bubble left slide-left">
+              <div class="message">{{message.body}}</div>
+            </div>
+          </div>
+
+          <div class="right" *ngIf="user.username === message.sendername">
+            <div class="chat-bubble right slide-right">
+              <div class="message">{{message.body}}</div>
+            </div>
+          </div>
+
+          <div class="cf"></div>
+        </div>
+        <div class="left" *ngIf="typing">
+          <div class="chat-bubble left slide-left">
+            <div class="message">
+              {{receiver}} is typing...
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col s12" style="margin: 0px">
+    <div class="row">
+      <div class="card" style="height: 55px">
+        <div class="inputRow">
+          <form (ngSubmit)="SendMessage()">
+            <div class="input-field inputField col s10">
+              <textarea name="message" [(ngModel)]="message" (keypress)="IsTyping()" class="materialize-textarea inputBox"></textarea>
+            </div>
+            <div class="input-field col s1 emojiDiv">
+              <button class="emojiBtn" (click)="Toggled()">😄</button>
+
+              <div class="emoji-content-editable" (emojiPickerCaretEmitter)="HandleCurrentCaret($event)" (input)="content = $event.target.textContent"
+                [textContent]="content" contenteditable="true"></div>
+
+              <i class="emoji-toggle-button imgBtn" [(emojiPickerIf)]="toggled" [emojiPickerPreserveSelection]="false" [emojiPickerDirection]="direction"
+                [emojiPickerAutofocus]="true" (emojiPickerSelect)="HandleSelection($event)"></i>
+            </div>
+            <div class="input-field col s1">
+              <button class="suffix btn">Send</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

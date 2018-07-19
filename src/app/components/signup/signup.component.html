@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="row">
+        <div class="col s10 offset-s1" id="panel">
+            <div class="progress" *ngIf="showSpinner">
+                <div class="indeterminate"></div>
+            </div>
+            <h3 id="title">Sign Up</h3>
+            <div id="errorMsg" *ngIf="errorMessage">
+                <span>{{errorMessage}}</span>
+            </div>
+            <form class="col s12" [formGroup]="signupForm" novalidate (ngSubmit)="signupUser()">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="user_name" type="text" formControlName="username" autocomplete="off">
+                        <label for="user_name">Username</label>
+                        <span class="error" *ngIf="!signupForm.controls['username'].valid && signupForm.controls['username'].touched">
+                            Username is required
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="email" type="email" formControlName="email" autocomplete="off">
+                        <label for="email">Email</label>
+                        <span class="error" *ngIf="!signupForm.controls['email'].valid && signupForm.controls['email'].touched">
+                            Email is required
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="pass-word" type="password" formControlName="password">
+                        <label for="pass-word">Password</label>
+                        <span class="error" *ngIf="!signupForm.controls['password'].valid && signupForm.controls['password'].touched">
+                            Password is required
+                        </span>
+                    </div>
+                </div>
+                <button class="btn waves-effect" id="signupbtn" [disabled]="!signupForm.valid">
+                    Sign Up
+                </button>
+            </form>
+
+            <!-- <div id="modal1" class="modal">
+                <div class="modal-content">
+                    <h4>Sign Up Error</h4>
+                    <p>A bunch of text</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</div>

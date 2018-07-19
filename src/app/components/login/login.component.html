@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row">
+        <div class="col s10 offset-s1" id="panel">
+            <div class="progress" *ngIf="showSpinner">
+                <div class="indeterminate"></div>
+            </div>
+            <h3 id="title">Login</h3>
+            <div id="errorMsg" *ngIf="errorMessage">
+                <span>{{errorMessage}}</span>
+            </div>
+            <form class="col s12" [formGroup]="loginForm" novalidate (ngSubmit)="loginUser()">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="user-name" type="text" formControlName="username" autocomplete="off">
+                        <label for="user-name">Username</label>
+                        <span class="error" *ngIf="!loginForm.controls['username'].valid && loginForm.controls['username'].touched">
+                            Username is required
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="password" type="password" formControlName="password">
+                        <label for="password">Password</label>
+                        <span class="error" *ngIf="!loginForm.controls['password'].valid && loginForm.controls['password'].touched">
+                            Password is required
+                        </span>
+                    </div>
+                </div>
+                <button class="btn waves-effect" id="loginbtn" [disabled]="!loginForm.valid">
+                    Login
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

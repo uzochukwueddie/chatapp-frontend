@@ -1,0 +1,45 @@
+.item-img-wrap {
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
+
+.item-img-wrap img {
+  -moz-transition: all 200ms linear;
+  -o-transition: all 200ms linear;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+  width: 100%;
+  height: 180px;
+}
+
+.imgCircle {
+  border-radius: 50%;
+}
+
+.imgCircle {
+  width: 160px !important;
+  height: 160px !important;
+  border-radius: 50%;
+  margin: 0 auto !important;
+}
+
+.imgBtn {
+  margin: 0 auto !important;
+  text-align: center !important;
+  margin-top: 5px !important;
+}
+
+.active {
+  width: 350px !important;
+  height: 350px !important;
+  border-radius: none !important;
+  margin: 50px 0px 0px 120px !important;
+}
+
+@media only screen and (max-width: 480px) {
+  .imgCircle {
+    width: 140px !important;
+    height: 140px !important;
+  }
+}

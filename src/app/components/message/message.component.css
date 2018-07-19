@@ -1,0 +1,217 @@
+.bar-footer {
+  overflow: visible !important;
+}
+.bar-footer textarea {
+  resize: none;
+  height: 25px;
+}
+
+img.profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 10px;
+}
+img.profile-pic.left {
+  left: 10px;
+}
+img.profile-pic.right {
+  right: 10px;
+}
+img.imgMsg {
+  height: auto;
+  width: auto;
+  max-width: 100%;
+  max-height: 100px;
+}
+
+.message {
+  font-size: 16px;
+}
+.message-detail {
+  white-space: nowrap;
+  font-size: 14px;
+}
+
+.message-wrapper {
+  position: relative;
+  margin-top: 10px;
+  z-index: 1000 !important;
+}
+.chat-bubble {
+  border-radius: 10px;
+  display: inline-block;
+  padding: 10px 18px;
+  position: relative;
+  margin: 10px;
+  max-width: 80%;
+}
+.chat-bubble:before {
+  content: '\00a0';
+  display: block;
+  height: 16px;
+  width: 9px;
+  position: absolute;
+  bottom: -7.5px;
+}
+.chat-bubble.left {
+  background: #f1f0f0;
+  float: left;
+  margin-left: 7px;
+}
+.chat-bubble.left:before {
+  background: #f1f0f0;
+  left: 10px;
+  z-index: -1;
+  border-radius: 10px;
+  -webkit-transform: rotate(70deg) skew(5deg);
+  transform: rotate(70deg) skew(5deg);
+}
+.chat-bubble.right {
+  background: #64b5f6;
+  color: #fff;
+  float: right;
+  margin-right: 7px;
+}
+.chat-bubble.right:before {
+  z-index: -1;
+  background: #64b5f6;
+  border-radius: 10px;
+  right: 10px;
+  -webkit-transform: rotate(118deg) skew(-5deg);
+  transform: rotate(118deg) skew(-5deg);
+}
+.chat-bubble.right a.autolinker {
+  color: #fff;
+  font-weight: bold;
+}
+.user-messages-top-icon {
+  font-size: 28px;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  top: -3px;
+  right: 5px;
+}
+.msg-header-username {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  top: -3px;
+}
+input,
+textarea,
+.item-input,
+.item-input-wrapper {
+  background: #64b5f6;
+  height: 38px;
+}
+.text-input {
+  background: transparent !important;
+}
+.bold {
+  font-weight: bold;
+  color: white;
+}
+.boldLeft {
+  color: red;
+}
+.cf {
+  clear: both !important;
+}
+a.autolinker {
+  color: #3b88c3;
+  text-decoration: none;
+}
+
+.rowDiv {
+  background: #ffffff !important;
+  height: 61vh !important;
+  max-height: 62vh !important;
+  overflow-y: scroll !important;
+  top: 0px;
+  margin-top: -20px !important;
+}
+
+.footerDiv {
+  height: 38px;
+  bottom: 0px !important;
+}
+
+.inputField {
+  height: 38px;
+}
+
+emoji-picker {
+  width: 100% !important;
+  right: 6px;
+}
+emoji-content {
+  width: 100% !important;
+}
+
+.emojiBtn {
+  font-size: 20px !important;
+  background: inherit !important;
+  border: none !important;
+  text-align: center !important;
+  margin-left: -10px !important;
+}
+
+.emojiDiv {
+  width: 40px !important;
+  margin-bottom: 0px !important;
+}
+
+.imgCircle {
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 50% !important;
+  margin: 0 auto !important;
+  top: 20px !important;
+}
+
+.imgCol {
+  width: 50px !important;
+  margin-left: 20px !important;
+  margin-top: 5px !important;
+}
+
+.nameCol span {
+  font-size: 25px;
+  font-weight: 600 !important;
+  color: white !important;
+  padding: 0px !important;
+}
+
+.nameCol {
+  margin-left: 28px !important;
+  height: auto !important;
+  width: auto !important;
+  padding: 0px !important;
+}
+
+.card {
+  height: 60px;
+}
+
+.inputBox {
+  color: white;
+  padding: 10px;
+}
+
+.input-field {
+  top: -9px !important;
+}
+
+.inputRow {
+  margin: 0px 10px 0px 10px !important;
+}
+
+.isOnline {
+  color: white;
+  margin-top: -5px !important;
+  padding: 0px !important;
+  font-size: 15px;
+}

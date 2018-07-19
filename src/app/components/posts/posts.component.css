@@ -1,0 +1,58 @@
+.button {
+  background: none !important;
+  border: none !important;
+  height: 10px;
+}
+
+.liked {
+  color: #64b5f6 !important;
+}
+
+.title {
+  font-weight: bold;
+  color: #64b5f6;
+}
+
+.time {
+  font-size: 14px;
+  color: #666565;
+}
+
+.iconSpan {
+  font-size: 18px;
+  line-height: 18px;
+  margin-right: 5px;
+}
+
+.material-icons {
+  display: inline-flex;
+  vertical-align: top;
+  cursor: pointer;
+}
+
+.postImage {
+  width: 100% !important;
+  margin: 0 auto !important;
+  left: 20px !important;
+  top: 10px !important;
+}
+
+.card-image {
+  width: 200px;
+  height: auto !important;
+}
+
+.active {
+  width: 350px !important;
+  height: 350px !important;
+  border-radius: none !important;
+  margin: -150px 0px 0px 120px !important;
+}
+
+.collection {
+  border: none !important;
+}
+
+.collection-item {
+  border: none !important;
+}

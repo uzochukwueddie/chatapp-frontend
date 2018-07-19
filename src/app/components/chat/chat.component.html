@@ -1,0 +1,9 @@
+<app-toolbar (onlineUsers)="online($event)"></app-toolbar>
+
+<div class="container" style="margin-top: 30px">
+    <div class="row chatRow">
+        <div class="col s12">
+            <app-message [users]="online_users"></app-message>
+        </div>
+    </div>
+</div>

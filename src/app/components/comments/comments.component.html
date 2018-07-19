@@ -1,0 +1,48 @@
+<app-toolbar></app-toolbar>
+
+<div class="container" style="margin-top: 30px">
+    <div class="row">
+        <div class="col s12 m4 l3">
+            <app-side></app-side>
+        </div>
+
+        <div class="col s12 m8 l9">
+            <div class="col s12 m10">
+                <div class="row">
+                    <div class="card">
+                        <ul class="collection">
+                            <li class="collection-item">
+                                <span class="post">{{post}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="card">
+                        <div class="card postDiv">
+                            <div class="card-content">
+                                <form [formGroup]="commmentForm" (ngSubmit)="AddComment()">
+                                    <div class="formDiv">
+                                        <textarea formControlName="comment" class="materialize-textarea"></textarea>
+                                        <button class="btn postBtn" [disabled]="!commmentForm.valid">
+                                            Add Comment
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <ul class="collection col s12 m10" *ngFor="let comment of commentsArray">
+                <li class="collection-item avatar">
+                    <img class="circle" src="http://placehold.it/50x50">
+                    <span class="title">{{comment.username}}</span>
+                    <p class="time">{{TimeFromNow(comment.createdAt)}}</p>
+                    <p class="postComment">{{comment.comment}}</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

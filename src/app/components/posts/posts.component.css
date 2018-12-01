@@ -56,3 +56,9 @@
 .collection-item {
   border: none !important;
 }
+
+.deleteBtn {
+  background: red !important;
+  border: none !important;
+  height: 40px;
+}

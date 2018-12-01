@@ -67,3 +67,15 @@
 .collection-item {
   border: none !important;
 }
+
+.button {
+  background: none !important;
+  border: none !important;
+  height: 10px;
+}
+
+.deleteBtn {
+  background: red !important;
+  border: none !important;
+  height: 40px;
+}

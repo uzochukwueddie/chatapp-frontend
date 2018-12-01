@@ -26,6 +26,8 @@ import { ImagesComponent } from '../components/images/images.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { ViewUserComponent } from '../components/view-user/view-user.component';
 import { ChangePasswordComponent } from '../components/change-password/change-password.component';
+import { ScrollDirective } from '../directives/scroll.directive';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   imports: [
@@ -36,7 +38,8 @@ import { ChangePasswordComponent } from '../components/change-password/change-pa
     RouterModule,
     NgxAutoScrollModule,
     FileUploadModule,
-    EmojiPickerModule.forRoot()
+    EmojiPickerModule.forRoot(),
+    InfiniteScrollModule
   ],
   declarations: [
     StreamsComponent,
@@ -54,7 +57,8 @@ import { ChangePasswordComponent } from '../components/change-password/change-pa
     MessageComponent,
     ImagesComponent,
     ViewUserComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    ScrollDirective
   ],
   exports: [StreamsComponent, ToolbarComponent],
   providers: [TokenService, PostService, UsersService, MessageService]

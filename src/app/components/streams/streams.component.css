@@ -7,3 +7,7 @@
 .tabs .active {
   background: inherit !important;
 }
+
+container {
+  overflow-y: scroll;
+}

@@ -32,4 +32,12 @@ export class PostService {
   getPost(id): Observable<any> {
     return this.http.get(`${BASEURL}/post/${id}`);
   }
+
+  EditPost(body): Observable<any> {
+    return this.http.put(`${BASEURL}/post/edit-post`, body);
+  }
+
+  DeletePost(id): Observable<any> {
+    return this.http.delete(`${BASEURL}/post/delete-post/${id}`);
+  }
 }

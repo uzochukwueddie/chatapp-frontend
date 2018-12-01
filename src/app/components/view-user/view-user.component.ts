@@ -1,8 +1,11 @@
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { PostService } from './../../services/post.service';
 import { UsersService } from './../../services/users.service';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import * as M from 'materialize-css';
 import { ActivatedRoute } from '@angular/router';
 import * as moment from 'moment';
+import io from 'socket.io-client';
 
 @Component({
   selector: 'app-view-user',
@@ -19,8 +22,19 @@ export class ViewUserComponent implements OnInit, AfterViewInit {
   followers = [];
   user: any;
   name: any;
+  postValue: any;
+  editForm: FormGroup;
+  modalElement: any;
+  socket: any;
 
-  constructor(private route: ActivatedRoute, private usersService: UsersService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private usersService: UsersService,
+    private postService: PostService,
+    private fb: FormBuilder
+  ) {
+    this.socket = io('http://localhost:3000');
+  }
 
   ngOnInit() {
     this.postsTab = true;
@@ -28,14 +42,32 @@ export class ViewUserComponent implements OnInit, AfterViewInit {
     M.Tabs.init(tabs, {});
     this.tabElement = document.querySelector('.nav-content');
 
+    this.modalElement = document.querySelector('.modal');
+    M.Modal.init(this.modalElement, {});
+
     this.route.params.subscribe(params => {
       this.name = params.name;
       this.GetUserData(this.name);
     });
+
+    this.socket.on('refreshPage', data => {
+      this.route.params.subscribe(params => {
+        this.name = params.name;
+        this.GetUserData(this.name);
+      });
+    });
+
+    this.InitEditForm();
   }
 
   ngAfterViewInit() {
     this.tabElement.style.display = 'none';
+  }
+
+  InitEditForm() {
+    this.editForm = this.fb.group({
+      editedPost: ['', Validators.required]
+    });
   }
 
   GetUserData(name) {
@@ -48,6 +80,40 @@ export class ViewUserComponent implements OnInit, AfterViewInit {
       },
       err => console.log(err)
     );
+  }
+
+  OpenEditModal(post) {
+    this.postValue = post;
+  }
+
+  SubmitEditedPost() {
+    const body = {
+      id: this.postValue.postId._id,
+      post: this.editForm.value.editedPost
+    };
+    this.postService.EditPost(body).subscribe(
+      data => {
+        this.socket.emit('refresh', {});
+      },
+      err => console.log(err)
+    );
+    M.Modal.getInstance(this.modalElement).close();
+    this.editForm.reset();
+  }
+
+  CloseModal() {
+    M.Modal.getInstance(this.modalElement).close();
+    this.editForm.reset();
+  }
+
+  DeletePost() {
+    this.postService.DeletePost(this.postValue.postId._id).subscribe(
+      data => {
+        this.socket.emit('refresh', {});
+      },
+      err => console.log(err)
+    );
+    M.Modal.getInstance(this.modalElement).close();
   }
 
   ChangeTab(value) {

@@ -1,31 +1,132 @@
-<ul class="collection col s12 m12 l10" *ngFor="let post of posts">
-    <li class="collection-item avatar">
-        <img src="http://res.cloudinary.com/ratingapp/image/upload/v{{post.user.picVersion}}/{{post.user.picId}}" alt="" class="circle">
-        <span class="title">{{post.username}}</span>
-        <p class="time">{{TimeFromNow(post.created)}}
-            <br> @{{post.user.city}}, {{post.user.country}}
-        </p>
-    </li>
-    <div class="row">
-        <div class="col s12">
-            <div class="card">
-                <div class="card-image" *ngIf="post.imgId">
-                    <img class="postImage" src="http://res.cloudinary.com/ratingapp/image/upload/v{{post.imgVersion}}/{{post.imgId}}">
-                </div>
-                <div class="card-content">
-                    <p>{{post.post}}</p>
-                </div>
-                <div class="card-action">
-                    <i (click)="LikePost(post)" [ngClass]="(!CheckInLikesArray(post.likes, user.username)) ? 'notLiked' : 'liked'" class="material-icons">thumb_up</i>
-                    <span class="iconSpan">
-                        {{post.totalLikes}}
-                    </span>
-                    <i class="material-icons" [ngClass]="(!CheckInLikesArray(post.comments, user.username)) ? 'notLiked' : 'liked'" (click)="OpenCommentBox(post)">chat</i>
-                    <span class="iconSpan">
-                        {{post.comments.length}}
-                    </span>
+<div class="search-results" infiniteScroll [infiniteScrollDistance]="1" [infiniteScrollThrottle]="3000" (scrolled)="onScrollDown()">
+
+    <ul class="collection col s12 m12 l10" *ngFor="let post of itemsToShow">
+        <li class="collection-item avatar">
+            <img src="http://res.cloudinary.com/ratingapp/image/upload/v{{post.user.picVersion}}/{{post.user.picId}}" alt="" class="circle">
+            <span class="title">{{post.username}}</span>
+            <span data-target="modal" class="title secondary-content modal-trigger" *ngIf="post.username === user.username" (click)="OpenEditModal(post)">
+                Edit
+            </span>
+            <p class="time">{{TimeFromNow(post.created)}}
+                <br> @{{post.user.city}}, {{post.user.country}}
+            </p>
+        </li>
+        <div class="row">
+            <div class="col s12">
+                <div class="card">
+                    <div class="card-image" *ngIf="post.imgId">
+                        <img class="postImage" src="http://res.cloudinary.com/ratingapp/image/upload/v{{post.imgVersion}}/{{post.imgId}}">
+                    </div>
+                    <div class="card-content">
+                        <p>{{post.post}}</p>
+                    </div>
+                    <div class="card-action">
+                        <i (click)="LikePost(post)" [ngClass]="(!CheckInLikesArray(post.likes, user.username)) ? 'notLiked' : 'liked'" class="material-icons">thumb_up</i>
+                        <span class="iconSpan">
+                            {{post.totalLikes}}
+                        </span>
+                        <i class="material-icons" [ngClass]="(!CheckInLikesArray(post.comments, user.username)) ? 'notLiked' : 'liked'" (click)="OpenCommentBox(post)">chat</i>
+                        <span class="iconSpan">
+                            {{post.comments.length}}
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
+    </ul>
+    <ul class="collection col s12 m12 l10" *ngFor="let post of itemsToShow">
+        <li class="collection-item avatar">
+            <img src="http://res.cloudinary.com/ratingapp/image/upload/v{{post.user.picVersion}}/{{post.user.picId}}" alt="" class="circle">
+            <span class="title">{{post.username}}</span>
+            <span data-target="modal" class="title secondary-content modal-trigger" *ngIf="post.username === user.username" (click)="OpenEditModal(post)">
+                Edit
+            </span>
+            <p class="time">{{TimeFromNow(post.created)}}
+                <br> @{{post.user.city}}, {{post.user.country}}
+            </p>
+        </li>
+        <div class="row">
+            <div class="col s12">
+                <div class="card">
+                    <div class="card-image" *ngIf="post.imgId">
+                        <img class="postImage" src="http://res.cloudinary.com/ratingapp/image/upload/v{{post.imgVersion}}/{{post.imgId}}">
+                    </div>
+                    <div class="card-content">
+                        <p>{{post.post}}</p>
+                    </div>
+                    <div class="card-action">
+                        <i (click)="LikePost(post)" [ngClass]="(!CheckInLikesArray(post.likes, user.username)) ? 'notLiked' : 'liked'" class="material-icons">thumb_up</i>
+                        <span class="iconSpan">
+                            {{post.totalLikes}}
+                        </span>
+                        <i class="material-icons" [ngClass]="(!CheckInLikesArray(post.comments, user.username)) ? 'notLiked' : 'liked'" (click)="OpenCommentBox(post)">chat</i>
+                        <span class="iconSpan">
+                            {{post.comments.length}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ul>
+    <ul class="collection col s12 m12 l10" *ngFor="let post of itemsToShow">
+        <li class="collection-item avatar">
+            <img src="http://res.cloudinary.com/ratingapp/image/upload/v{{post.user.picVersion}}/{{post.user.picId}}" alt="" class="circle">
+            <span class="title">{{post.username}}</span>
+            <span data-target="modal" class="title secondary-content modal-trigger" *ngIf="post.username === user.username" (click)="OpenEditModal(post)">
+                Edit
+            </span>
+            <p class="time">{{TimeFromNow(post.created)}}
+                <br> @{{post.user.city}}, {{post.user.country}}
+            </p>
+        </li>
+        <div class="row">
+            <div class="col s12">
+                <div class="card">
+                    <div class="card-image" *ngIf="post.imgId">
+                        <img class="postImage" src="http://res.cloudinary.com/ratingapp/image/upload/v{{post.imgVersion}}/{{post.imgId}}">
+                    </div>
+                    <div class="card-content">
+                        <p>{{post.post}}</p>
+                    </div>
+                    <div class="card-action">
+                        <i (click)="LikePost(post)" [ngClass]="(!CheckInLikesArray(post.likes, user.username)) ? 'notLiked' : 'liked'" class="material-icons">thumb_up</i>
+                        <span class="iconSpan">
+                            {{post.totalLikes}}
+                        </span>
+                        <i class="material-icons" [ngClass]="(!CheckInLikesArray(post.comments, user.username)) ? 'notLiked' : 'liked'" (click)="OpenCommentBox(post)">chat</i>
+                        <span class="iconSpan">
+                            {{post.comments.length}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ul>
+</div>
+
+
+
+
+
+
+<div class="container">
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h4>
+                Edit Post
+                <button class="secondary-content deleteBtn btn" (click)="DeletePost()">
+                    Delete
+                </button>
+            </h4>
+            <p *ngIf="postValue">{{postValue.post}}</p>
+            <form [formGroup]="editForm" novalidate>
+                <textarea formControlName="editedPost" class="materialize-textarea"></textarea>
+                <div class="modal-footer">
+                    <button class="button" (click)="CloseModal()">Close</button>&nbsp;
+                    <button class="btn" (click)="SubmitEditedPost()">Save</button>
+                </div>
+            </form>
+        </div>
+
     </div>
-</ul>
+</div>

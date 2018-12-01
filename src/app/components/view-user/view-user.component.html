@@ -28,7 +28,7 @@
       <div class="row">
         <div class="col s12">
           <span class="title">{{name}}</span>
-          <h2 class="cityName" *ngIf="user.city">{{user.city}}, {{user.country}}</h2>
+          <h2 class="cityName" *ngIf="user">{{user.city}}, {{user.country}}</h2>
         </div>
       </div>
     </div>
@@ -41,7 +41,10 @@
               <li class="collection-item avatar">
                 <img class="circle" src="http://res.cloudinary.com/ratingapp/image/upload/v{{user.picVersion}}/{{user.picId}}">
                 <span class="post">{{post.postId.username}}</span>
-                <p class="time">{{TimeFromNow(post.created)}}
+                <span data-target="modal" class="title secondary-content modal-trigger" (click)="OpenEditModal(post)">
+                  Edit
+                </span>
+                <p class="time">{{TimeFromNow(post.postId.created)}}
                   <br> @{{user.city}}, {{user.country}}
                 </p>
               </li>
@@ -100,5 +103,27 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="container">
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <h4>
+        Edit Post
+        <button class="secondary-content deleteBtn btn" (click)="DeletePost()">
+          Delete
+        </button>
+      </h4>
+      <p *ngIf="postValue">{{postValue.post}}</p>
+      <form [formGroup]="editForm" novalidate>
+        <textarea formControlName="editedPost" class="materialize-textarea"></textarea>
+        <div class="modal-footer">
+          <button class="button" (click)="CloseModal()">Close</button>&nbsp;
+          <button class="btn" (click)="SubmitEditedPost()">Save</button>
+        </div>
+      </form>
+    </div>
+
   </div>
 </div>
